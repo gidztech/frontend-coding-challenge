@@ -1,4 +1,5 @@
 <script>
+  import { mapState } from 'vuex'
   import CheckButton from '@/components/Survey/components/CheckButton'
   import ThvButton from '@/components/Shared/Button'
 
@@ -13,6 +14,9 @@
         type: String,
         default: ''
       }
+    },
+    computed: {
+      ...mapState('survey', ['name'])
     },
     data () {
       return {
