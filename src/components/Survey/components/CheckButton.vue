@@ -14,18 +14,32 @@
         type: Boolean,
         default: false
       }
+    },
+    methods: {
+      handleCheckChange() {
+        this.$emit('change', {
+          value: this.value,
+          selected: !this.selected
+        });
+      }
     }
-  }
+  };
 </script>
 
-<template>  
-  <div class="check-button" :class="{ 'check-button--selected': selected }" tabindex="0">
+<template>
+  <button
+    type="button"
+    class="check-button"
+    :class="{ 'check-button--selected': selected }"
+    @click="handleCheckChange"
+  >
     <p class="check-button__text body--large">{{ text }}</p>
-  </div>
+  </button>
 </template>
 
 <style lang="css">
   .check-button {
+    width: 100%;
     background: #fff;
     border: 1px solid #ced0d9;
     height: 100px;
@@ -37,7 +51,7 @@
     font-weight: 400;
     transition: .2s;
     padding: 0 10px;
-    border-radius: .25rem;        
+    border-radius: .25rem;
   }
 
   @media (min-width: 768px) {
@@ -71,10 +85,10 @@
   }
 
   .check-button--disabled:hover {
-    outline: none
+    outline: none;
   }
 
   .check-button__text {
-    color: #3d4250
+    color: #3d4250;
   }
 </style>

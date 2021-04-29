@@ -1,4 +1,5 @@
 <script>
+  import { mapGetters, mapActions } from "vuex";
   import CheckButton from '@/components/Survey/components/CheckButton'
   import ThvButton from '@/components/Shared/Button'
 
@@ -7,6 +8,12 @@
     components: {
       ThvButton,
       CheckButton
+    },
+     computed: {
+      ...mapGetters('survey', { selectedDiet: 'getDiet' }),
+      noDietSelected() {
+        return this.selectedDiet === ''
+      }
     },
     data () {
       return {
@@ -36,8 +43,19 @@
       }
     },
     methods: {
+       ...mapActions("survey", ["updateDiet"]),
+      dietIsSelected(value) {
+        return this.selectedDiet === value
+      },
+      handleDietChange({ value, selected }) {
+        this.updateDiet(selected ? value : '')
+      },
       submit () {
-        this.$router.push('/dob')
+        if (this.noDietSelected) {
+          window.alert('You must select 1 diet')
+        } else {
+          this.$router.push('/dob')
+        }
       },
       back () {
         this.$router.push('/goals')
@@ -52,7 +70,14 @@
       <div class="survey-questions__diet align-center">
         <h1>Do you follow a particular diet?</h1>
         <div class="spacer sp__top--sm"></div>
-        <check-button v-for="(diet, key) in diets" :key="key" :text="diet.name"></check-button>
+        <check-button 
+          v-for="(diet, key) in diets" 
+          :key="key" :text="diet.name" 
+          :value="key"
+          :selected="dietIsSelected(key)"
+          @change="handleDietChange"
+          >
+        </check-button>
         <div class="grid-x button-container">
           <div class="cell auto">
             <div class="back-button-container">
