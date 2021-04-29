@@ -1,3 +1,5 @@
+import { getDefaultState } from './state'
+
 export default {
   updateName: (state, name) => {
     state.name = name
@@ -13,5 +15,8 @@ export default {
   },
   updateStep (state, step) {
     state.step = step
+  },
+  reset (state) {
+    Object.assign(state, getDefaultState())
   }
 }

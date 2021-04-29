@@ -6,3 +6,6 @@
 4. I don't think `name` should be used to send goal/diet to server unless it's guaranteed not to change/be localised.
    I used the `key` instead, but then had to re-name them to match the server validation. If we were surfacing
    a `displayName` as well, then using `name` as originally intended is good.
+5. Back in browser doesn't update step. Instead we should drive this state via router instead of on interactions
+6. State should be kept in session or local storage to prevent loss of changes
+7. Shouldn't be able to access success page directly

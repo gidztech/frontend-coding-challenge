@@ -43,5 +43,8 @@ export default {
   },
   updateStep ({ commit }, step) {
     commit('updateStep', step)
+  },
+  reset ({ commit }) {
+    commit('reset')
   }
 }

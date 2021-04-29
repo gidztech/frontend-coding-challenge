@@ -1,21 +1,18 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
   import ProgressBar from '@/components/Shared/ProgressBar'
   import surveySteps from '../../../constants/survey-steps'
-
 
   export default {
     name: 'SurveyProgress',
     components: {
       ProgressBar
     },
-    data () {
-      return {
-        surveySteps
-      }
-    },
     computed: {
       ...mapGetters('survey', { currentStep: 'getStep' }),
+      surveySteps () {
+        return surveySteps
+      }
     },
   }
 </script>
