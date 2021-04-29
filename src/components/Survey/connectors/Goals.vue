@@ -23,22 +23,22 @@
     data() {
       return {
         goals: {
-          improveEnergy: {
+          energy: {
             name: "Energy"
           },
-          improveFitness: {
+          fitness: {
             name: "Fitness"
           },
-          improveLongTermHealth: {
+          'long-term health': {
             name: "Long-term health"
           },
-          improveMood: {
+          mood: {
             name: "Mood"
           },
-          improveSleep: {
+          sleep: {
             name: "Sleep"
           },
-          improveWeight: {
+          weight: {
             name: "Weight"
           }
         }

@@ -23,14 +23,18 @@
       }
     },
     methods: {
-      ...mapActions('survey', ['updateDob', 'updateStep']),
+      ...mapActions('survey', ['updateDob', 'updateStep', 'sendToApi']),
       submit () {
         this.$refs.DobInput.handleSubmit()
         this.$validator.reset()
         this.$validator.validate().then(result => {
           if (result && !this.feedback) {
-            this.updateStep(this.currentStep + 1)
-            this.$router.push('/success')
+            this.sendToApi().then(response => {
+              if (response.success) {
+                this.updateStep(this.currentStep + 1)
+                this.$router.push('/success')
+              }
+            }) 
           }
         })
       },

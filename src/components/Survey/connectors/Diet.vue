@@ -24,7 +24,7 @@
           coeliac: {
             name: 'Coeliac'
           },
-          lowCarbHighFat: {
+          'low-carb, high-fat': {
             name: 'Low-carb, high-fat'
           },
           paleo: {
@@ -33,7 +33,7 @@
           pescatarian: {
             name: 'Pescatarian'
           },
-          plantBased: {
+          'plant-based': {
             name: 'Plant-based'
           },
           other: {
@@ -59,7 +59,7 @@
         }
       },
       back () {
-        this.updateStep(this.currentStep - 1)
+        this.updateStep(this.currentStep -1)
         this.$router.push('/goals')
       }
     }

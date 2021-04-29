@@ -2,10 +2,27 @@ import axios from 'axios'
 const API_URL = 'http://localhost:3000'
 
 export default {
-  async sendToApi (context, data) {
-    const body = {}
-    const config = { headers: {} }
-    return axios.post(`${API_URL}/users`, body, config)
+  async sendToApi ({ state }) {
+    const body = JSON.stringify({
+      user: {
+        name: state.name,
+        goals: state.goals,
+        diet: state.diet,
+        dob: state.dob
+      }
+    })
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const response = await axios.post(`${API_URL}/users`, body, config)
+
+    if (response.status === 201) {
+      return { success: true }
+    }
+
+    return { success: false, error: response.statusText }
   },
   updateName ({ commit }, name) {
     commit('updateName', name)
