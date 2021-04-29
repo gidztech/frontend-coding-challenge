@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters, mapActions } from "vuex";
+  import { mapGetters, mapActions } from 'vuex';
   import CheckButton from '@/components/Survey/components/CheckButton'
   import ThvButton from '@/components/Shared/Button'
 
@@ -43,7 +43,7 @@
       }
     },
     methods: {
-       ...mapActions("survey", ["updateDiet"]),
+       ...mapActions('survey', ['updateDiet']),
       dietIsSelected(value) {
         return this.selectedDiet === value
       },

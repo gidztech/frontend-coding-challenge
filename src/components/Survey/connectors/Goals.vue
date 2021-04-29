@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters, mapActions } from "vuex";
+  import { mapGetters, mapActions } from 'vuex';
   import CheckButton from "@/components/Survey/components/CheckButton";
   import ThvButton from "@/components/Shared/Button";
 
@@ -45,7 +45,7 @@
       };
     },
     methods: {
-      ...mapActions("survey", ["addGoals", "removeGoals"]),
+      ...mapActions('survey', ['addGoals', 'removeGoals']),
       goalIsSelected(value) {
         return this.selectedGoals.includes(value)
       },

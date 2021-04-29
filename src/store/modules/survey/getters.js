@@ -7,5 +7,8 @@ export default {
   },
   getDiet (state) {
     return state.diet
+  },
+  getDob (state) {
+    return state.dob
   }
 }

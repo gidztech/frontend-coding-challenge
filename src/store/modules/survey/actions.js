@@ -20,5 +20,8 @@ export default {
   },
   updateDiet ({ commit }, diet) {
     commit('updateDiet', diet)
+  },
+  updateDob ({ commit }, dob) {
+    commit('updateDob', dob)
   }
 }

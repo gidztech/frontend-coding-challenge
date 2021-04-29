@@ -1,4 +1,5 @@
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import ThvButton from '@/components/Shared/Button'
   import DobInput from '@/components/Shared/DobInput'
 
@@ -9,6 +10,7 @@
       ThvButton
     },
     computed: {
+      ...mapGetters('survey', { dob: 'getDob' }),
       disableNext () {
         let under18 = this.$refs.DobInput && this.$refs.DobInput.ageError
         return this.dob === '' || this.errors.items.length > 0 || under18 === true
@@ -21,6 +23,7 @@
       }
     },
     methods: {
+      ...mapActions('survey', ['updateDob']),
       submit () {
         this.$refs.DobInput.handleSubmit()
         this.$validator.reset()
@@ -45,7 +48,18 @@
         <div class="spacer sp__top--sm"></div>
         <p class="body--large question-description">This helps us recommend the best test for you. We know it's a bit forward but our lips are sealed!</p>
         <div class="spacer sp__top--sm"></div>
-        <dob-input class="align-center survey-input" ref="DobInput" v-validate="'required'" data-vv-value-path="dob" :value="dob" name="dob" :error="errors.has('dob')" minAge="18" :feedback="feedback" @keyup.enter="submit" label=""></dob-input>
+        <dob-input class="align-center survey-input" 
+          ref="DobInput" 
+          v-validate="'required'" 
+          data-vv-value-path="dob" 
+          :value="dob" name="dob" 
+          :error="errors.has('dob')" 
+          minAge="18" 
+          :feedback="feedback" 
+          @keyup.enter="submit"
+          @input="updateDob"
+          label="">
+        </dob-input>
         <div class="grid-x button-container">
           <div class="cell auto">
             <div class="back-button-container">
