@@ -12,7 +12,7 @@
       CheckButton
     },
     computed: {
-      ...mapGetters('survey', { name: 'getName', selectedGoals: 'getGoals' }),
+      ...mapGetters('survey', { name: 'getName', selectedGoals: 'getGoals', currentStep: 'getStep' }),
       goalLimitReached() {
         return this.selectedGoals.length === MAX_NUMBER_OF_GOALS
       },
@@ -45,7 +45,7 @@
       };
     },
     methods: {
-      ...mapActions('survey', ['addGoals', 'removeGoals']),
+      ...mapActions('survey', ['addGoals', 'removeGoals', 'updateStep']),
       goalIsSelected(value) {
         return this.selectedGoals.includes(value)
       },
@@ -63,6 +63,7 @@
       },
       submit() {
         if (!this.noGoalsSelected) {
+          this.updateStep(this.currentStep + 1)
           this.$router.push("/diet");
         } else {
           window.alert('You must select at least one goal')
@@ -70,6 +71,7 @@
         
       },
       back() {
+        this.updateStep(this.currentStep - 1)
         this.$router.push("/name");
       }
     }

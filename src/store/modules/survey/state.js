@@ -2,7 +2,8 @@ const state = () => ({
   name: '',
   goals: [],
   diet: '',
-  dob: ''
+  dob: '',
+  step: 0
 })
 
 export default state

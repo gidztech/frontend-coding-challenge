@@ -1,5 +1,5 @@
 <script>
-  import { mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import TextInput from '@/components/Shared/TextInput'
   import ThvButton from '@/components/Shared/Button'
 
@@ -14,10 +14,14 @@
         name: ''
       }
     },
+    computed: {
+      ...mapGetters('survey', { currentStep: 'getStep' })
+    },
     methods: {
-       ...mapActions('survey', ['updateName']),
+       ...mapActions('survey', ['updateName', 'updateStep']),
       submit () {
         this.updateName(this.name)
+        this.updateStep(this.currentStep + 1)
         this.$router.push('/goals')
       }
     }

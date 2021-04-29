@@ -10,7 +10,7 @@
       ThvButton
     },
     computed: {
-      ...mapGetters('survey', { dob: 'getDob' }),
+      ...mapGetters('survey', { dob: 'getDob', currentStep: 'getStep' }),
       disableNext () {
         let under18 = this.$refs.DobInput && this.$refs.DobInput.ageError
         return this.dob === '' || this.errors.items.length > 0 || under18 === true
@@ -23,17 +23,19 @@
       }
     },
     methods: {
-      ...mapActions('survey', ['updateDob']),
+      ...mapActions('survey', ['updateDob', 'updateStep']),
       submit () {
         this.$refs.DobInput.handleSubmit()
         this.$validator.reset()
         this.$validator.validate().then(result => {
           if (result && !this.feedback) {
+            this.updateStep(this.currentStep + 1)
             this.$router.push('/success')
           }
         })
       },
       back () {
+        this.updateStep(this.currentStep - 1)
         this.$router.push('/diet')
       }
     }

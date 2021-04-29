@@ -9,8 +9,8 @@
       ThvButton,
       CheckButton
     },
-     computed: {
-      ...mapGetters('survey', { selectedDiet: 'getDiet' }),
+    computed: {
+      ...mapGetters('survey', { selectedDiet: 'getDiet', currentStep: 'getStep' }),
       noDietSelected() {
         return this.selectedDiet === ''
       }
@@ -43,7 +43,7 @@
       }
     },
     methods: {
-       ...mapActions('survey', ['updateDiet']),
+       ...mapActions('survey', ['updateDiet', 'updateStep']),
       dietIsSelected(value) {
         return this.selectedDiet === value
       },
@@ -54,10 +54,12 @@
         if (this.noDietSelected) {
           window.alert('You must select 1 diet')
         } else {
+          this.updateStep(this.currentStep + 1)
           this.$router.push('/dob')
         }
       },
       back () {
+        this.updateStep(this.currentStep - 1)
         this.$router.push('/goals')
       }
     }

@@ -10,5 +10,8 @@ export default {
   },
   getDob (state) {
     return state.dob
+  },
+  getStep (state) {
+    return state.step
   }
 }

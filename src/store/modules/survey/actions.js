@@ -23,5 +23,8 @@ export default {
   },
   updateDob ({ commit }, dob) {
     commit('updateDob', dob)
+  },
+  updateStep ({ commit }, step) {
+    commit('updateStep', step)
   }
 }
