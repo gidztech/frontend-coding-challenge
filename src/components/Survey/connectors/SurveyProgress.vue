@@ -13,7 +13,7 @@
       surveySteps () {
         return surveySteps
       }
-    },
+    }
   }
 </script>
 

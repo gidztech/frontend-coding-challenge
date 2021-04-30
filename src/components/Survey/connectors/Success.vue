@@ -1,7 +1,7 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex';
-  import ThvButton from "@/components/Shared/Button";
-  import successImage from '../../../assets/images/thrivaling.png'
+  import { mapGetters, mapActions } from 'vuex'
+import ThvButton from '@/components/Shared/Button'
+import successImage from '../../../assets/images/thrivaling.png'
 
   export default {
     name: 'Success',
@@ -14,7 +14,7 @@
         return successImage
       }
     },
-   methods: {
+    methods: {
       ...mapActions('survey', { reset: 'reset' }),
       submit () {
         this.reset()
@@ -43,9 +43,7 @@
                 {{ name }}
               </div>
             </div>
-
             <div class="spacer sp__top--xs"></div>
-
             <div class="survey-questions__sucess-summary-field">
               <div class="survey-questions__success-summary-heading">
                 Goals
@@ -54,9 +52,7 @@
                 {{ goals.join(', ') }}
               </div>
             </div>
-
             <div class="spacer sp__top--xs"></div>
-
             <div class="survey-questions__sucess-summary-field">
               <div class="survey-questions__success-summary-heading">
                 Diet
@@ -65,9 +61,7 @@
                 {{ diet }}
               </div>
             </div>
-
             <div class="spacer sp__top--xs"></div>
-
             <div class="survey-questions__sucess-summary-field">
               <div class="survey-questions__success-summary-heading">
                 DOB

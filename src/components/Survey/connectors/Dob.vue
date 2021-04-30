@@ -34,7 +34,7 @@
                 this.updateStep(this.currentStep + 1)
                 this.$router.push('/success')
               }
-            }) 
+            })
           }
         })
       },

@@ -9,3 +9,4 @@
 5. Back in browser doesn't update step. Instead we should drive this state via router instead of on interactions
 6. State should be kept in session or local storage to prevent loss of changes
 7. Shouldn't be able to access success page directly
+8. Difficult to see what global styles are available because they are minified in index.html. I had to look at other components to get an idea

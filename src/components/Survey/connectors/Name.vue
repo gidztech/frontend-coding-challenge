@@ -18,7 +18,7 @@
       ...mapGetters('survey', { currentStep: 'getStep' })
     },
     methods: {
-       ...mapActions('survey', ['updateName', 'updateStep']),
+      ...mapActions('survey', ['updateName', 'updateStep']),
       submit () {
         this.updateName(this.name)
         this.updateStep(this.currentStep + 1)

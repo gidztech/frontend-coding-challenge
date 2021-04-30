@@ -16,6 +16,7 @@ export default {
         'Content-Type': 'application/json'
       }
     }
+
     const response = await axios.post(`${API_URL}/users`, body, config)
 
     if (response.status === 201) {

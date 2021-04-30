@@ -1,81 +1,79 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex';
-  import CheckButton from "@/components/Survey/components/CheckButton";
-  import ThvButton from "@/components/Shared/Button";
+  import { mapGetters, mapActions } from 'vuex'
+  import CheckButton from '@/components/Survey/components/CheckButton'
+  import ThvButton from '@/components/Shared/Button'
 
   const MAX_NUMBER_OF_GOALS = 4
 
   export default {
-    name: "Goals",
+    name: 'Goals',
     components: {
       ThvButton,
       CheckButton
     },
     computed: {
       ...mapGetters('survey', { name: 'getName', selectedGoals: 'getGoals', currentStep: 'getStep' }),
-      goalLimitReached() {
+      goalLimitReached () {
         return this.selectedGoals.length === MAX_NUMBER_OF_GOALS
       },
-      noGoalsSelected() {
+      noGoalsSelected () {
         return this.selectedGoals.length === 0
       }
     },
-    data() {
+    data () {
       return {
         goals: {
           energy: {
-            name: "Energy"
+            name: 'Energy'
           },
           fitness: {
-            name: "Fitness"
+            name: 'Fitness'
           },
           'long-term health': {
-            name: "Long-term health"
+            name: 'Long-term health'
           },
           mood: {
-            name: "Mood"
+            name: 'Mood'
           },
           sleep: {
-            name: "Sleep"
+            name: 'Sleep'
           },
           weight: {
-            name: "Weight"
+            name: 'Weight'
           }
         }
-      };
+      }
     },
     methods: {
       ...mapActions('survey', ['addGoals', 'removeGoals', 'updateStep']),
-      goalIsSelected(value) {
+      goalIsSelected (value) {
         return this.selectedGoals.includes(value)
       },
-      handleGoalChange({ value, selected }) {
+      handleGoalChange ({ value, selected }) {
         if (selected) {
           if (!this.goalLimitReached) {
             this.addGoals(value)
           } else {
             window.alert(`You have already selected ${MAX_NUMBER_OF_GOALS} goals. Remove one to proceed`)
           }
-        
         } else {
           this.removeGoals(value)
         }
       },
-      submit() {
+      submit () {
         if (!this.noGoalsSelected) {
           this.updateStep(this.currentStep + 1)
-          this.$router.push("/diet");
+          this.$router.push('/diet')
         } else {
           window.alert('You must select at least one goal')
         }
-        
       },
-      back() {
+      back () {
         this.updateStep(this.currentStep - 1)
-        this.$router.push("/name");
+        this.$router.push('/name')
       }
     }
-  };
+  }
 </script>
 
 <template>

@@ -16,20 +16,21 @@
       }
     },
     methods: {
-      handleCheckChange() {
+      handleCheckChange () {
         this.$emit('change', {
           value: this.value,
           selected: !this.selected
-        });
+        })
       }
     }
-  };
+  }
 </script>
 
 <template>
   <button
     type="button"
     class="check-button"
+    :data-automation="`check-button-${value}`"
     :class="{ 'check-button--selected': selected }"
     @click="handleCheckChange"
   >

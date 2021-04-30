@@ -1,6 +1,6 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex';
-  import CheckButton from '@/components/Survey/components/CheckButton'
+  import { mapGetters, mapActions } from 'vuex'
+import CheckButton from '@/components/Survey/components/CheckButton'
   import ThvButton from '@/components/Shared/Button'
 
   export default {
@@ -11,7 +11,7 @@
     },
     computed: {
       ...mapGetters('survey', { selectedDiet: 'getDiet', currentStep: 'getStep' }),
-      noDietSelected() {
+      noDietSelected () {
         return this.selectedDiet === ''
       }
     },
@@ -43,11 +43,11 @@
       }
     },
     methods: {
-       ...mapActions('survey', ['updateDiet', 'updateStep']),
-      dietIsSelected(value) {
+      ...mapActions('survey', ['updateDiet', 'updateStep']),
+      dietIsSelected (value) {
         return this.selectedDiet === value
       },
-      handleDietChange({ value, selected }) {
+      handleDietChange ({ value, selected }) {
         this.updateDiet(selected ? value : '')
       },
       submit () {
@@ -59,7 +59,7 @@
         }
       },
       back () {
-        this.updateStep(this.currentStep -1)
+        this.updateStep(this.currentStep - 1)
         this.$router.push('/goals')
       }
     }
